@@ -18,7 +18,7 @@ async function _createToken(key, content) {
     },
     PK,
     {
-      expiresIn: '100d'
+      expiresIn: '1d'
     }
   );
   return TokenCrypt.crypt(String(key), token);
@@ -55,4 +55,21 @@ export async function validateToken({ token }) {
   } catch (error) {
     return invalid(false);
   }
+}
+
+export function needToken(url: string): boolean {
+  const whitelist = [''];
+
+  const whitelistEndsWith = [''];
+
+  const whitelistStartsWith = ['/api/public'];
+
+  for (const wlUrl of whitelistEndsWith) if (url.endsWith(wlUrl)) return false;
+
+  for (const wlUrl of whitelistStartsWith)
+    if (url.startsWith(wlUrl)) return false;
+
+  for (const wlUrl of whitelist) if (url.includes(wlUrl)) return false;
+
+  return true;
 }

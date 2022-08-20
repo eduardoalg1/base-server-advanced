@@ -1,1 +1,1 @@
-export * from './Acronym';
+export * from './Example';

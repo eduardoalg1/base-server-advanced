@@ -1,9 +1,9 @@
 import * as TokenUtils from '../TokenUtils';
 
 export async function TokenValitation(req, res, next) {
-  const { method } = req;
+  const { method, url } = req;
 
-  if (!['PUT', 'DELETE'].includes(method)) return next();
+  if (method === 'OPTIONS' || !TokenUtils.needToken(url)) return next();
 
   const invalid = (expired = false) =>
     res

@@ -1,4 +1,4 @@
-import { Acronym, IAcronym } from '../../models';
+import { Example, IExample } from '../../models';
 import { Doc, parsePagination } from '../../utils';
 
 export async function list({
@@ -8,49 +8,10 @@ export async function list({
   from: string;
   limit: string;
   search: string;
-}): Promise<{
-  data: Doc<IAcronym>[];
-  moreResults: boolean;
-}> {
+}): Promise<Doc<IExample>[]> {
   const { from, limit } = parsePagination(pagination);
   const regExp = new RegExp(search, 'gi');
-  const query = { $or: [{ acronym: regExp }, { definition: regExp }] };
-  const data = await Acronym.find(query).skip(from).limit(limit).lean();
-  const allDocs = await Acronym.countDocuments(query);
-  return {
-    data,
-    moreResults: allDocs > from + limit
-  };
-}
-
-export async function addAcronym({
-  acronym,
-  definition
-}: {
-  acronym: string;
-  definition: string;
-}): Promise<Doc<IAcronym>> {
-  return Acronym.create({ acronym, definition });
-}
-
-export async function updateAcronym({
-  acronym,
-  definition
-}: {
-  acronym: string;
-  definition: string;
-}): Promise<Doc<IAcronym>> {
-  return Acronym.findOneAndUpdate(
-    { acronym },
-    { definition },
-    { new: true }
-  ).lean();
-}
-
-export async function deleteAcronym({
-  acronym
-}: {
-  acronym: string;
-}): Promise<Doc<IAcronym>[]> {
-  return Acronym.findOneAndDelete({ acronym }).lean();
+  const query = { $or: [{ Example: regExp }, { definition: regExp }] };
+  const data = await Example.find(query).skip(from).limit(limit).lean();
+  return data;
 }

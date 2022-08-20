@@ -1,8 +1,13 @@
 EXAMPLE SERVER INITIALIZATION
 
+This base server uses typescript and can be build in docker.
+
 -- DEV MODE --
-- if you want to run watching changes use export  APP_ENV=dev && docker-compose up
-in this particular case the .env file has the APP_ENV var set as dev by default. If you have this set you can only run docker-compose-up
+- Docker
+  if you want to run watching changes use export  APP_ENV=dev && docker-compose up
+  in this particular case the .env file has the APP_ENV var set as dev by default. If you have this set you can only run docker-compose-up
+- Normal Execution
+  yarn dev
 
 -- PROD MODE --
 - to run the server in a production environment you need to run APP_ENV=prod && docker-compose up

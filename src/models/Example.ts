@@ -6,20 +6,17 @@ import { schemaOptions, getModel, id } from '../utils';
 
 @plugin(getters)
 @modelOptions({
-  options: { customName: 'acronym' },
+  options: { customName: 'example' },
   schemaOptions
 })
-export class IAcronym extends TimeStamps implements Base<string> {
+export class IExample extends TimeStamps implements Base<string> {
   id: string;
 
   @prop(id)
   public _id: string;
 
   @prop({ required: true })
-  public acronym: string;
-
-  @prop({ required: true })
-  public definition: string;
+  public content: string;
 }
 
-export const Acronym = getModel(IAcronym);
+export const Example = getModel(IExample);

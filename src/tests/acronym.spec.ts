@@ -24,9 +24,9 @@ beforeAll(() => {
   }
 });
 
-describe('Acronym', () => {
-  it('Should get acronym by filter', async () => {
-    const emptyQuery = await request(app).get('/acronym');
+describe('Example', () => {
+  it('Should get example by filter', async () => {
+    const emptyQuery = await request(app).get('/example');
     expect(emptyQuery.text).toEqual(JSON.stringify(data));
     expect(emptyQuery.status).toEqual(200);
   });

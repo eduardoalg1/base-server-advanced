@@ -21,6 +21,7 @@
 - basic mongoose mock for tests
 - *supertest* for integration tests
 - *Token* creation and validation functions. middleware to validate this tokens
+- pre commit and pre push scripts to validate the code and avoid errors in the server
 
 ----------------------------------------------------------------
 

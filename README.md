@@ -4,8 +4,9 @@ This base server uses typescript and can be build in docker.
 
 -- DEV MODE --
 - Docker
-  if you want to run watching changes use export  APP_ENV=dev && docker-compose up
-  in this particular case the .env file has the APP_ENV var set as dev by default. If you have this set you can only run docker-compose-up
+if you want to run watching changes use export  APP_ENV=dev && docker-compose up
+in this particular case the .env file has the APP_ENV var set as dev by default. If you have this set you can only run docker-compose-up
+
 - Normal Execution
   yarn dev
 

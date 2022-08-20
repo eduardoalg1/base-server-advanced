@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  api:
+    build:
+      context: .
+      args:
+        - APP_ENV=${APP_ENV}
+    environment:
+        - MONGO_USER=${MONGO_USER}
+        - MONGO_PASS=${MONGO_PASS}
+        - MONGO_HOST=${MONGO_HOST}
+        - MONGO_DB=${MONGO_DB}
+    volumes:
+      - ./src:/usr/src/app/src
+    ports:
+      - '3000:3000'
+    restart: always
